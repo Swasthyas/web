@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+  <title>Swasthyas</title>
+
+  <link rel="stylesheet" href="../assets/css/maicons.css">
+
+  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+
+  <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
+
+  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+
+  <link rel="stylesheet" href="../assets/css/theme.css">
+</head>
+<body>
+
+<audio id="backgroundMusic" src="../assets/img/ocean.mp3" loop autoplay muted></audio>
+
+
+  <script>
+    window.onload = () => {
+        const music = document.getElementById('backgroundMusic');
+        music.muted = false;
+        music.play().catch(() => {
+            document.body.addEventListener('click', () => music.play(), { once: true });
+        });
+    };
+</script>
+
+
+ 
+
+
+  <!-- Back to top button -->
+  <div class="back-to-top"></div>
+  <div style="position: fixed; bottom: 20px; left: 20px; width: 50px; height: 50px; background-color: #25D366; color: #fff; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); cursor: pointer; transition: all 0.3s ease; z-index: 1000;" 
+  onmouseover="this.style.backgroundColor='#128C7E'; this.style.transform='scale(1.1)';" 
+  onmouseout="this.style.backgroundColor='#25D366'; this.style.transform='scale(1)';">
+  <span style="font-size: 24px; color: inherit;" class="mai-logo-whatsapp"></span>
+</div>
+
+  <header>
+    <div class="topbar">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 text-sm">
+            <div class="site-info">
+              <a href="https://api.whatsapp.com/send?phone=917619562842&text=Hi%20Swasthyas"><span class="mai-call text-primary"></span> +91 7619562842</a>
+              <span class="divider">|</span>
+              <a href="#"><span class="mai-mail text-primary"></span>confirmation.swasthyas@gmail.com</a>
+            </div>
+          </div>
+          <div class="col-sm-4 text-right text-sm">
+            <div class="social-mini-button">
+              <a href="https://www.facebook.com/share/Xe3jCbWC7rcJW5bM/"><span class="mai-logo-facebook-f"></span></a>            
+              <a href="https://www.instagram.com/swasthyas_/profilecard/?igsh=MWwwd282ZHRyNHpwcA=="><span class="mai-logo-instagram"></span></a>
+
+            </div>
+          </div>
+        </div> <!-- .row -->
+      </div> <!-- .container -->
+    </div> <!-- .topbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+       <a class="navbar-brand" href="https://swasthyas.com">
+    <img src="../assets/img/aaw.png" alt="Swasthyas Logo" style="height: 100px; width: auto;">
+</a>
+<a class="navbar-brand" href="https://swasthyas.com">
+    <img src="../assets/img/logo2.png" alt="Swasthyas Logo" style="height: 100px; width: auto;">
+</a>
+
+
+      <div class="container">
+
+
+       
+
+     <form id="searchForm" onsubmit="return findOnPage()">
+    <div class="input-group input-navbar" style="display: flex; align-items: center; gap: 8px; margin: 10px 0;">
+        <div class="input-group-prepend" style="display: flex; align-items: center;">
+           
+        </div>
+        <input type="text" id="searchInput" class="form-control" placeholder="Enter keyword.." 
+               style="padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 4px;" 
+               aria-label="Search" aria-describedby="icon-addon1">
+    </div>
+</form>
+
+<script>
+    function findOnPage() {
+        // Get the search query
+        const query = document.getElementById("searchInput").value.trim();
+
+        // Remove any previous highlights
+        document.querySelectorAll("span[style*='background-color: yellow']").forEach((el) => {
+            el.outerHTML = el.innerHTML;
+        });
+
+        if (!query) return false; // Stop if input is empty
+
+        // Get all text nodes on the page
+        const textNodes = [];
+        const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+
+        while (walk.nextNode()) {
+            textNodes.push(walk.currentNode);
+        }
+
+        let found = false;
+        textNodes.forEach((node) => {
+            const nodeText = node.nodeValue;
+            const index = nodeText.toLowerCase().indexOf(query.toLowerCase());
+            if (index !== -1) {
+                found = true;
+
+                // Highlight the matched text
+                const span = document.createElement("span");
+                span.style.backgroundColor = "yellow";
+                span.style.fontWeight = "bold";
+                span.textContent = nodeText.substring(index, index + query.length);
+
+                const afterMatch = document.createTextNode(nodeText.substring(index + query.length));
+                node.nodeValue = nodeText.substring(0, index);
+
+                node.parentNode.insertBefore(span, node.nextSibling);
+                node.parentNode.insertBefore(afterMatch, span.nextSibling);
+
+                // Scroll to the highlighted text
+                span.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        });
+
+        if (!found) alert("No matches found on this page.");
+        return false; // Prevent form submission
+    }
+</script>
+
+
+
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupport">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">WE-WHAMS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="doctors.html">Therapist</a>
+            </li>
+           
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-primary ml-lg-3" href="#">Login / Register</a>
+            </li>
+          </ul>
+        </div> <!-- .navbar-collapse -->
+      </div> <!-- .container -->
+    </nav>
+  </header>
+
+  <div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/tree.gif);">
+    <div class="hero-section">
+      <div class="container text-center wow zoomIn">
+        <h3><span class="subhead">Let's start your journey towards</span></h3>
+        <h1 class="display-4">HEALING</h1>
+        <a href="#" class="btn btn-primary"  onclick="scrollToForm()">Let's Consult</a>
+        <script>
+  function scrollToForm() {
+    const form = document.querySelector('.main-form');
+    if (form) {
+      form.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script>
+
+   
+  <!-- Pause Music Button -->
+  <div class="text-center mt-3">
+    <button id="pause-button" class="btn btn-secondary" style="position: absolute; top: 10px; right: 10px;">Music</button>
+  </div>
+</div>
+
+<script>
+  const audio = document.getElementById('backgroundMusic');
+  const pauseButton = document.getElementById('pause-button');
+
+  pauseButton.addEventListener('click', () => {
+    if (!audio.paused) {
+      audio.pause();
+      pauseButton.textContent = "🔇";
+    } else {
+      audio.play();
+      pauseButton.textContent = "🔊";
+    }
+  });
+</script>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="bg-light">
+    <div class="page-section py-3 mt-md-n5 custom-index">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-4 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-secondary text-white">
+                <span class="mai-chatbubbles-outline"></span>
+              </div>
+              <p><span>Talk</span> with a Therapist</p>
+            </div>
+          </div>
+          <div class="col-md-4 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-primary text-white">
+                <span class="mai-shield-checkmark"></span>
+              </div>
+              <p><span>Corporate</span> Mental Health Protection</p>
+            </div>
+          </div>
+          <div class="col-md-4 py-3 py-md-0">
+            <div class="card-service wow fadeInUp">
+              <div class="circle-shape bg-accent text-white">
+                <span class="mai-basket"></span>
+              </div>
+              <p><span>Self</span>-Help Package</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .page-section -->
+
+    <div class="page-section pb-0">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 py-3 wow fadeInUp">
+            <h1>Swasthyas <br> The Self-care Adda</h1>
+            <h3>Harshitha Prabhu,<br> Founder</h1>
+            <p class="text-grey mb-4"> 
+I am passionate about empowering individuals to take charge of their mental health and emotional well-being. Through Swasthyas, I provide a safe, non-judgmental space for self-healing, growth, and transformation. My work encompasses therapy, counseling, and mentorship for aspiring psychologists, fostering holistic development and resilience. Committed to breaking mental health stigma, I aim to promote self-care and awareness while offering compassionate support to help individuals find balance and empowerment.</p>
+            <a href="about.html" class="btn btn-primary">Learn More</a>
+          </div>
+          <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
+            <div class="img-place custom-img-1">
+              <img src="../assets/img/bg-doctor.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .bg-light -->
+  </div> <!-- .bg-light -->
+
+  <div class="page-section">
+    <div class="container">
+      <h1 class="text-center mb-5 wow fadeInUp">Our Therapist</h1>
+
+      <div class="owl-carousel wow fadeInUp" id="doctorSlideshow">
+        <div class="item">
+          <div class="card-doctor">
+            <div class="header">
+              <img src="../assets/img/doctors/Harshitha Prabhu.png" alt="">
+              <div class="meta">
+                <a href="https://api.whatsapp.com/send?phone=917619562842&text=Hi%20Can%20I%20Connect%20With%20Harshitha%20Prabhu"><span class="mai-logo-whatsapp"></span></a>
+                <a href="http://www.linkedin.com/in/harshitha-prabhu-b7b38116a" target="_blank"><span class="mai-logo-linkedin"></span></a>
+              </div>
+            </div>
+            <div class="body">
+              <p class="text-xl mb-0">Harshitha Prabhu</p>
+              <span class="text-sm text-grey">MSc Psychology (Clinical)</span>
+            </div>
+          </div>
+        </div> <div class="item">
+          <div class="card-doctor">
+            <div class="header">
+              <img src="../assets/img/doctors/sonam.png" alt="">
+              <div class="meta">
+                <a href="https://api.whatsapp.com/send?phone=917619562842&text=Hi%20Can%20I%20Connect%20With%20Sonam%20Wadkar"><span class="mai-logo-whatsapp"></span></a>
+                <a href="http://www.linkedin.com/in/sonam-wadkar-314477216" target="_blank"><span class="mai-logo-linkedin"></span></a>
+              </div>
+            </div>
+            <div class="body">
+              <p class="text-xl mb-0">Sonam R Wadkar</p>
+              <span class="text-sm text-grey"> MSc Psychology (Clinical)</span>
+            </div>
+          </div>
+        </div>
+       
+        <div class="item">
+          <div class="card-doctor">
+            <div class="header">
+              <img src="../assets/img/doctors/Yeshyeshwini.png" alt="">
+              <div class="meta">
+                <a href="https://api.whatsapp.com/send?phone=917619562842&text=Hi%20Can%20I%20Connect%20With%20Yeshyeshwini%20Gopinathan"><span class="mai-logo-whatsapp"></span></a>
+                <a href="" target="_blank"><span class="mai-logo-linkedin"></span></a>
+              </div>
+            </div>
+            <div class="body">
+              <p class="text-xl mb-0">Yeshyeshwini Gopinathan</p>
+              <span class="text-sm text-grey">MSc. Psychology (Clinical)</span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="card-doctor">
+            <div class="header">
+              <img src="../assets/img/doctors/Taruni.png" alt="">
+              <div class="meta">
+                <a href="https://api.whatsapp.com/send?phone=917619562842&text=Hi%20Can%20I%20Connect%20With%20Taruni%20Priya"><span class="mai-logo-whatsapp"></span></a>
+                <a href="https://www.linkedin.com/in/taruni-priya-30900717b/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BZPnC4tE5Q9qu%2Fe9JQfQgkw%3D%3D" target="_blank"><span class="mai-logo-linkedin"></span></a>
+              </div>
+            </div>
+            <div class="body">
+              <p class="text-xl mb-0">Taruni Priya Sai V
+</p>
+              <span class="text-sm text-grey">MSc Counselling Psychology</span>
+            </div>
+          </div>
+        </div>
+         <div class="item">
+          <div class="card-doctor">
+            <div class="header">
+              <img src="../assets/img/doctors/Gayatri.png" alt="">
+              <div class="meta">
+                <a href="https://api.whatsapp.com/send?phone=917619562842&text=Hi%20Can%20I%20Connect%20With%20Gayatri%20Devi"><span class="mai-logo-whatsapp"></span></a>
+                <a href="https://www.linkedin.com/in/gayatri-kutcharlapati-624b2a159/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BseX7OEzARZyfcFeOaQOh6A%3D%3D" target="_blank"><span class="mai-logo-linkedin"></span></a>
+              </div>
+            </div>
+            <div class="body">
+              <p class="text-xl mb-0">Gayatri Devi Kutcharlapati</p>
+              <span class="text-sm text-grey">MSc Psychology (Clinical)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="page-section">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">Make an Appointment</h1>
+<form class="main-form" id="contactForm">
+  
+  <div class="row mt-5 ">
+    <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
+      <input type="text" class="form-control" placeholder="Full name" name="fullname" required>
+    </div>
+    <div class="col-12 col-sm-6 py-2 wow fadeInRight">
+       <input type="email" class="form-control" placeholder="Email address.." name="email" required>
+    </div>
+    <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+      <input type="date" class="form-control" name="date" required>
+    </div>
+    <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+      <select name="department" id="departement" class="custom-select">
+        <option value="personal">Personal Therapy</option>
+        <option value="couple">Couple Therapy</option>
+        <option value="relation">Relation Counseling</option>
+        <option value="angerandstress">Anger/Stress Management</option>
+        <option value="quick">Quick Talk</option>
+        <option value="addiction">Addiction Therapy</option>
+        <option value="child">Child Counseling</option>
+      </select>
+    </div>
+    <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+       <input type="tel" class="form-control" placeholder="Number.." name="number" required pattern="^\d{10}$" title="Please enter a valid 10-digit phone number" required>
+   
+    </div>
+    <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+      <textarea name="message" id="message" class="form-control" rows="6" placeholder="Enter message.." required></textarea>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Submit Request</button>
+</form>
+
+<div id="responsePopup" style="display:none; padding:20px; background-color:#f0f0f0; border:1px solid #ccc; border-radius:8px; position:fixed; top:20%; left:50%; transform:translateX(-50%); z-index:1000;">
+  <p id="responseMessage"></p>
+  <button onclick="closePopup()">Close</button>
+</div>
+<script>
+  // Handle form submission
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    var formData = new FormData(this);
+    
+    // Send form data using fetch (AJAX)
+    fetch('https://script.google.com/macros/s/AKfycbyQ2v2pELHsLnwL48EnIePu-XBbZLSbiKUmMJ0V26cwcLaJNtFMwjMqg7M8LIaDE0n5/exec', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.text())
+    .then(result => {
+      // Show success message in popup
+      showPopup(result);
+    })
+    .catch(error => {
+      // Show error message in popup
+      showPopup("An error occurred. Please try again.");
+    });
+  });
+
+  // Function to show the popup
+  function showPopup(message) {
+    document.getElementById("responseMessage").innerText = message;
+    document.getElementById("responsePopup").style.display = "block";
+  }
+
+  // Function to close the popup
+  function closePopup() {
+    document.getElementById("responsePopup").style.display = "none";
+  }
+</script>
+
+
+    </div>
+  </div> <!-- .page-section -->
+
+  <div class="page-section banner-home bg-image" style="background-image: url(../assets/img/);">
+    <div class="container py-5 py-lg-0">
+      <div class="row align-items-center">
+        <div class="col-lg-4 wow zoomIn">
+          <div class="img-banner d-none d-lg-block">
+            <img src="../assets/img/mobile_app.png" alt="">
+          </div>
+        </div>
+        <div class="col-lg-8 wow fadeInRight"><a href="https://api.whatsapp.com/send?phone=917619562842&text=Hi%20QuickTalk%20Swasthyas">
+          <h1 class="font-weight-normal mb-3" style="color: white;">Quick Talk</h1>
+          <h4 class="font-weight-normal mb-3" style="color: white;">Immediate Assistance for Your Mental health is Just a Talk Away.</h4>
+          
+        </a></div>
+      </div>
+    </div>
+  </div> <!-- .banner-home -->
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row px-md-3">
+      
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>Contact Us</h5>         
+          <p class="footer-link mt-2">
+          <a href="https://api.whatsapp.com/send?phone=917619562842&text=Hi%20Swasthyas" class="footer-link">Swasthyas<br>+91 7619562842<br>Bengaluru</a>
+         </p>
+
+          <h5 class="mt-3">Social Media</h5>
+          <div class="footer-sosmed mt-3">
+            <a href="https://www.facebook.com/share/Xe3jCbWC7rcJW5bM/" target="_blank"><span class="mai-logo-facebook-f"></span></a>   
+            <a href="https://www.instagram.com/swasthyas_/profilecard/?igsh=MWwwd282ZHRyNHpwcA==" target="_blank"><span class="mai-logo-instagram"></span></a>
+            <a href="https://www.linkedin.com/company/swasthyas/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B%2FfFVrf%2FtTGqzZGmeeIl9AQ%3D%3D" target="_blank"><span class="mai-logo-linkedin"></span></a>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <p id="copyright">Copyright &copy; 2024 <a href="https://swasthyas.com/" target="_blank">Swasthyas</a>. All right reserved</p>
+    </div>
+  </footer>
+
+<script src="../assets/js/jquery-3.5.1.min.js"></script>
+
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+
+<script src="../assets/vendor/wow/wow.min.js"></script>
+
+<script src="../assets/js/theme.js"></script>
+  
+</body>
+</html>

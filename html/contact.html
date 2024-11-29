@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+  <title>Swasthyas</title>
+
+  <link rel="stylesheet" href="../assets/css/maicons.css">
+
+  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+
+  <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
+
+  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+
+  <link rel="stylesheet" href="../assets/css/theme.css">
+</head>
+<body>
+
+  <!-- Back to top button -->
+  <div class="back-to-top"></div>
+  <div style="position: fixed; bottom: 20px; left: 20px; width: 50px; height: 50px; background-color: #25D366; color: #fff; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); cursor: pointer; transition: all 0.3s ease; z-index: 1000;" 
+  onmouseover="this.style.backgroundColor='#128C7E'; this.style.transform='scale(1.1)';" 
+  onmouseout="this.style.backgroundColor='#25D366'; this.style.transform='scale(1)';">
+  <span style="font-size: 24px; color: inherit;" class="mai-logo-whatsapp"></span>
+</div>
+
+ <header>
+    <div class="topbar">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 text-sm">
+            <div class="site-info">
+              <a href="#"><span class="mai-call text-primary"></span> +91 7619562842</a>
+              <span class="divider">|</span>
+              <a href="#"><span class="mai-mail text-primary"></span> confirmation.swasthyas@gmail.com</a>
+            </div>
+          </div>
+          <div class="col-sm-4 text-right text-sm">
+              <div class="social-mini-button">
+              <a href="https://www.facebook.com/share/Xe3jCbWC7rcJW5bM/"><span class="mai-logo-facebook-f"></span></a>            
+              <a href="https://www.instagram.com/swasthyas_/profilecard/?igsh=MWwwd282ZHRyNHpwcA=="><span class="mai-logo-instagram"></span></a>
+
+            </div>
+          </div>
+        </div> <!-- .row -->
+      </div> <!-- .container -->
+    </div> <!-- .topbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+       <a class="navbar-brand" href="https://swasthyas.com">
+    <img src="../assets/img/aaw.png" alt="Swasthyas Logo" style="height: 100px; width: auto;">
+</a>
+<a class="navbar-brand" href="https://swasthyas.com">
+    <img src="../assets/img/logo2.png" alt="Swasthyas Logo" style="height: 100px; width: auto;">
+</a>
+
+
+      <div class="container">
+
+
+       
+
+     <form id="searchForm" onsubmit="return findOnPage()">
+    <div class="input-group input-navbar" style="display: flex; align-items: center; gap: 8px; margin: 10px 0;">
+        <div class="input-group-prepend" style="display: flex; align-items: center;">
+           
+        </div>
+        <input type="text" id="searchInput" class="form-control" placeholder="Enter keyword.." 
+               style="padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 4px;" 
+               aria-label="Search" aria-describedby="icon-addon1">
+    </div>
+</form>
+
+<script>
+    function findOnPage() {
+        // Get the search query
+        const query = document.getElementById("searchInput").value.trim();
+
+        // Remove any previous highlights
+        document.querySelectorAll("span[style*='background-color: yellow']").forEach((el) => {
+            el.outerHTML = el.innerHTML;
+        });
+
+        if (!query) return false; // Stop if input is empty
+
+        // Get all text nodes on the page
+        const textNodes = [];
+        const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+
+        while (walk.nextNode()) {
+            textNodes.push(walk.currentNode);
+        }
+
+        let found = false;
+        textNodes.forEach((node) => {
+            const nodeText = node.nodeValue;
+            const index = nodeText.toLowerCase().indexOf(query.toLowerCase());
+            if (index !== -1) {
+                found = true;
+
+                // Highlight the matched text
+                const span = document.createElement("span");
+                span.style.backgroundColor = "yellow";
+                span.style.fontWeight = "bold";
+                span.textContent = nodeText.substring(index, index + query.length);
+
+                const afterMatch = document.createTextNode(nodeText.substring(index + query.length));
+                node.nodeValue = nodeText.substring(0, index);
+
+                node.parentNode.insertBefore(span, node.nextSibling);
+                node.parentNode.insertBefore(afterMatch, span.nextSibling);
+
+                // Scroll to the highlighted text
+                span.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        });
+
+        if (!found) alert("No matches found on this page.");
+        return false; // Prevent form submission
+    }
+</script>
+
+
+
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupport">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">WE-WHAMS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="doctors.html">Therapist</a>
+            </li>
+           
+            <li class="nav-item active">
+              <a class="nav-link" href="contact.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-primary ml-lg-3" href="#">Login / Register</a>
+            </li>
+          </ul>
+        </div> <!-- .navbar-collapse -->
+      </div> <!-- .container -->
+    </nav>
+  </header>
+
+  <div class="page-banner overlay-dark bg-image" style="background-image: url(../assets/img/backdrop.svg);">
+    <div class="banner-section">
+      <div class="container text-center wow fadeInUp">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Services</li>
+          </ol>
+        </nav>
+        <h1 class="font-weight-normal">Services</h1>
+      </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+  </div> <!-- .page-banner -->
+
+  <div class="page-section">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">Our Services</h1>
+
+       <p><h4>Quick Talk:</h4> Brief consultations for immediate support, ideal for those facing urgent issues or seeking a quick check-in.<br><br>
+        <img src="../assets/img/quick.svg" width="500" height="500">
+
+<h4>Personal Therapy:</h4> One-on-one sessions tailored to individual needs, allowing clients to explore personal challenges and emotional struggles at their own pace with a licensed therapist.<br><br>
+<img src="../assets/img/person/personal.svg" width="500" height="500">
+
+<h4>Group Therapy:</h4> A supportive setting where individuals share experiences with others facing similar challenges. This collaborative approach fosters connection and provides new perspectives, helping participants feel less isolated.<br><br>
+<img src="../assets/img/person/group.svg" width="500" height="500">
+
+<h4>Couples Therapy:</h4> Tailored for partners looking to improve their relationship dynamics. Sessions focus on enhancing communication, resolving conflicts, and building a stronger emotional connection through guided discussions and exercises.<br><br><img src="../assets/img/relation.svg" width="500" height="500">
+
+
+
+<h4>Stress Management:</h4> Offers tools and techniques to identify stressors and develop coping strategies. This includes mindfulness practices, relaxation techniques, and lifestyle changes aimed at reducing stress levels.<br><br>
+<img src="../assets/img/stress.svg" width="500" height="500">
+
+
+<h4>Anger Management:</h4> Support for individuals struggling with anger issues, focusing on understanding triggers and developing healthy coping mechanisms. The goal is to learn constructive ways to express feelings and manage responses.<br><br>
+<img src="../assets/img/anger.svg" width="500" height="500">
+
+<h4>Child Counseling:</h4> Specialized therapy for children addressing emotional, behavioral, and social challenges. This includes techniques such as play therapy and age-appropriate interventions to help children express themselves. Additionally, Academic Counseling focuses on supporting children with academic challenges, helping them develop effective study habits, overcome learning obstacles, and boost their confidence in school.<br>
+
+<img src="../assets/img/person/child.svg" width="500" height="500">
+</p>
+
+      
+    </div>
+  </div>
+
+ 
+
+  <div class="page-section banner-home bg-image" style="background-image: url(../assets/img/);">
+    <div class="container py-5 py-lg-0">
+      <div class="row align-items-center">
+        <div class="col-lg-4 wow zoomIn">
+          <div class="img-banner d-none d-lg-block">
+            <img src="../assets/img/mobile_app.png" alt="">
+          </div>
+        </div>
+        <div class="col-lg-8 wow fadeInRight"><a href="https://api.whatsapp.com/send?phone=917619562842&text=Hi%20QuickTalk%20Swasthyas">
+          <h1 class="font-weight-normal mb-3" style="color: white;">Quick Talk</h1>
+          <h4 class="font-weight-normal mb-3" style="color: white;">Immediate Assistance for Your Mental health is Just a Talk Away.</h4>
+         
+        </div>
+      </div>
+    </div>
+  </div> <!-- .banner-home -->
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row px-md-3">
+      
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>Contact Us</h5>         
+          <p class="footer-link mt-2">
+          <a href="https://api.whatsapp.com/send?phone=917619562842&text=Hi%20Swasthyas" class="footer-link">Swasthyas<br>+91 7619562842<br>Bengaluru</a>
+         </p>
+
+          <h5 class="mt-3">Social Media</h5>
+          <div class="footer-sosmed mt-3">
+            <a href="https://www.facebook.com/share/Xe3jCbWC7rcJW5bM/" target="_blank"><span class="mai-logo-facebook-f"></span></a>   
+            <a href="https://www.instagram.com/swasthyas_/profilecard/?igsh=MWwwd282ZHRyNHpwcA==" target="_blank"><span class="mai-logo-instagram"></span></a>
+            <a href="https://www.linkedin.com/company/swasthyas/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B%2FfFVrf%2FtTGqzZGmeeIl9AQ%3D%3D" target="_blank"><span class="mai-logo-linkedin"></span></a>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <p id="copyright">Copyright &copy; 2024 <a href="https://swasthyas.com/" target="_blank">Swasthyas</a>. All right reserved</p>
+    </div>
+  </footer>
+
+<script src="../assets/js/jquery-3.5.1.min.js"></script>
+
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+
+<script src="../assets/vendor/wow/wow.min.js"></script>
+
+<script src="../assets/js/google-maps.js"></script>
+
+<script src="../assets/js/theme.js"></script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIA_zqjFMsJM_sxP9-6Pde5vVCTyJmUHM&callback=initMap"></script>
+  
+</body>
+</html>
